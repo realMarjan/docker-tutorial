@@ -7,4 +7,4 @@ before_install:
 
 # all the command needed to be exec
 script:
-    - docker run marjanp/docker-tutorial npm run test -- --coverage
+    - docker run -e CI=true marjanp/docker-tutorial npm run test -- --coverage
