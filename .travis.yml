@@ -8,3 +8,16 @@ before_install:
 # all the command needed to be exec
 script:
     - docker run -e CI=true marjanp/docker-tutorial npm run test -- --coverage
+
+deploy: 
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-tutorial1"
+    env: "DockerTutorial1-env"
+    bucket_name: "elasticbeanstalk-us-east-2-457566651209"
+    bucket_path: "docker-tutorial1"
+    on: 
+        branch: master
+    access_key_id: "$AWS_ACCESS_KEY"
+    secret_access_key:
+        secure: "$AWS_SECRET_KEY"
