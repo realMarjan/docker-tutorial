@@ -1,0 +1,10 @@
+sudo: required
+services: 
+    - docker
+
+before_install:
+    - docker build -t marjanp/docker-tutorial -f Dockerfile.dev .
+
+# all the command needed to be exec
+script:
+    - docker run marjanp/docker-tutorial npm run test -- --coverage
